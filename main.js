@@ -253,7 +253,8 @@ function displayMerchantCoupons(coupons) {
   var arraycoupons = coupons.data
   couponsView.innerHTML = '';// 
   if (arraycoupons.length === 0) {
-    couponsView.innerHTML = `<p>Sorry, No available Coupons for this merchant.</p>`;
+    couponsView.innerHTML = `<p>Sorry, No available Coupons for this merchant.</p>
+    <img src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/de13058f-2d9c-4616-9d23-0fe0829ec55d/244ef684-c73e-48b5-bcd6-5fd95303977c.png" alt="sad blue AI cat" width="300" height="200">`;
     return
   }
   
