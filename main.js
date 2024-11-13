@@ -143,7 +143,7 @@ function showMerchantsView() {
   addRemoveActiveNav(merchantsNavButton, itemsNavButton)
   addNewButton.dataset.state = 'merchant'
   show([merchantsView, addNewButton])
-  hide([itemsView])
+  hide([itemsView, couponsView])
   displayMerchants(merchants)
 }
 
@@ -234,6 +234,7 @@ function displayMerchantItems(event) {
 
 function getMerchantCoupons(event) {
   let merchantId = event.target.closest("article").id.split('-')[1]
+  showingText.innerText = `Coupons For Merchant #${merchantId}`
   console.log("Merchant ID:", merchantId)
 
   fetchData(`merchants/${merchantId}/coupons`)
@@ -246,22 +247,18 @@ function getMerchantCoupons(event) {
 
 function displayMerchantCoupons(coupons) {
   show([couponsView])
-  hide([merchantsView, itemsView])
+  hide([merchantsView, itemsView, addNewButton])
   //show and hide like in the og hang in there
   console.log("Displaying Coupons:", coupons);
-
-  couponsView.innerHTML = '';// clears it out so you dont see other coupons
-//if theres no coupons return a message and dont rener the coupons
-  if (coupons.length === 0) {
+  var arraycoupons = coupons.data
+  couponsView.innerHTML = '';// 
+  if (arraycoupons.length === 0) {
     couponsView.innerHTML = `<p>Sorry, No available Coupons for this merchant.</p>`;
     return
   }
-//for each coupon create a div that is in the item class so it gets the right styling
-//then use interpolation to display the data 
-//get into array first
-  var arraycoupons = coupons.data
-  arraycoupons.forEach(coupon => {
-    console.log('test', coupon.name)
+  
+  arraycoupons.forEach(couponnn => {
+    var coupon = couponnn.attributes
     const couponElement = document.createElement('div');
     couponElement.classList.add('item'); // Applying styling for each coupon
     couponElement.innerHTML = `
@@ -270,7 +267,7 @@ function displayMerchantCoupons(coupons) {
       <p>Discount: ${coupon.discount_value} ${coupon.coupon_type === 'percent' ? '%' : '$'}</p>
       <p>Status: ${coupon.active ? 'Active' : 'Inactive'}</p>`
       //render the percent or dollar sign differing based on the type of coupon,, had to research this 
-    couponsView.appendChild(couponElement);//append it add it to the section
+    couponsView.appendChild(couponElement);
   });
 }
 

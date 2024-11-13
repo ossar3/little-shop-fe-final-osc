@@ -11,7 +11,7 @@
 /* GENERAL */
 * {
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Papyrus';
   margin: 0;
   padding: 0;
 }
@@ -23,13 +23,15 @@ body {
   height: 100vh;
 }
 
+
 button {
-  background-color: var(--blue);
+  background-color: rgb(13, 105, 33);
   border: none;
   border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: 0.9em;
+  font-family: 'Papyrus';
   padding: 10px 15px;
   transition: background-color 0.3s ease;
 }
@@ -45,7 +47,8 @@ input {
 /* ASIDE */
 aside {
   align-items: flex-end;
-  background-color: var(--blue);
+  /*background-color: var(--blue);*/
+  background-image: url('https://i.ebayimg.com/images/g/4gwAAOSwuGJhJUOO/s-l1200.jpg');
   color: #fff;
   display: flex;
   flex-direction: column;
